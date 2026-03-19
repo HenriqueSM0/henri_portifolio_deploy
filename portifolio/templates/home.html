@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Henrique Siqueira</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #1992f5;
+            --surface: #0e0eff;
+            --surface-email: #ff0000;
+            --surface-email-hover: #9f0000;
+            --surface-esp: #7ec5ff;
+            --surface-hover: #0000a8;
+            --text: #ffffff;
+            --text-muted: #62f4ef;
+            --text-muted-esp: #fee500;
+            --accent: #98dfff;
+            --accent-esp: #ff8f8f;
+            --accent-dim: rgba(34, 211, 238, 0.1);
+            --border: #ffffff;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 80px 24px;
+        }
+
+        /* Header / Hero */
+        .hero {
+            margin-bottom: 64px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+            margin-bottom: 12px;
+        }
+
+        .hero .subtitle {
+            font-size: 1.1rem;
+            color: var(--text);
+            margin-bottom: 24px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            margin-top: 20px;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Divider */
+        .divider {
+            height: 1px;
+            background: var(--border);
+            margin: 48px 0;
+        }
+
+        /* Section */
+        .section {
+            margin-bottom: 48px;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .section h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+        }
+
+        .section p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            list-style: none;
+        }
+
+        .skills-grid li {
+            background-color: var(--accent-dim);
+            color: var(--accent);
+            padding: 6px 16px;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid rgba(34, 211, 238, 0.15);
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .skills-grid li:hover {
+            background-color: rgba(34, 211, 238, 0.18);
+            transform: translateY(-1px);
+        }
+
+        /* Projects Link Card */
+        .projects-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px 28px;
+            text-decoration: none;
+            color: var(--text);
+            transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .projects-card:hover {
+            background-color: var(--surface-hover);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .projects-card .card-content {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .projects-card .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .projects-card .card-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .projects-card .arrow {
+            font-size: 1.25rem;
+            color: var(--accent);
+            transition: transform 0.2s ease;
+        }
+
+        .projects-card:hover .arrow {
+            transform: translateX(4px);
+        }
+
+        /* Email Link Card */
+        .email-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: var(--surface-email);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px 28px;
+            text-decoration: none;
+            color: var(--text);
+            transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .email-card:hover {
+            background-color: var(--surface-email-hover);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .email-card .card-content {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .email-card .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .email-card .card-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted-esp);
+        }
+
+        .email-card .arrow {
+            font-size: 1.25rem;
+            color: var(--accent-esp);
+            transition: transform 0.2s ease;
+        }
+
+        .email-card:hover .arrow {
+            transform: translateX(4px);
+        }
+
+        /* Contact */
+        .contact-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .contact-item .icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--surface-esp);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            flex-shrink: 0;
+        }
+
+        .contact-item .icon svg {
+            width: 18px;
+            height: 18px;
+            color: var(--accent);
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 64px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .container {
+                padding: 48px 20px;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .skills-grid {
+                gap: 8px;
+            }
+
+            .projects-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    {% load static %}
+    <div class="container">
+
+        <!-- Hero -->
+        <header class="hero">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <h1>Henrique Siqueira</h1>
+                <img src="{% static 'images/henri_insta.png' %}" alt="Description of image"  
+                    style="width: 100px; 
+                        height: 100px; 
+                        border-radius: 50%; 
+                        border: 3px solid white;
+                        object-fit: cover;">
+                </img>
+            </div>
+            <p class="subtitle">Engenheiro de Software</p>
+            <nav class="nav-links">
+                <a href="#sobre">Sobre</a>
+                <a href="#habilidades">Habilidades</a>
+                <a href="#contato">Contato</a>
+                <a href="/projetos">Projetos</a>
+            </nav>
+        </header>
+
+        <div class="divider"></div>
+
+        <!-- Sobre mim -->
+        <section id="sobre" class="section">
+            <h2>Sobre mim:</h2>
+            <p class="section-label">Estudante de Ciência da computação na Universidade Fedeal de Goiás (4/9) que
+                tem como principal interesse, o desenvolvimento de Software com Python, que inclui : Django, Agentes
+                de inteligência artificial e mais. Utilizando também dos fundamentos da Computação : Estruturas de
+                dados,
+                Arquitetura de computadores, matemática computacional e mais. Além de uma atenção a IA : Engenharia de
+                Prompts
+                e Machine Learning.
+            </p>
+            <h2>A minha tragetória até aqui :</h2>
+            <p class="section-label">No fim do ensino médio parecia que eu não me via atuando em nenhuma área. Estudava para o vestibular sem
+                saber qual curso escolher. Nesse período, meu pai me incentivou a testar programação. Lembro da primeira
+                vez que consegui rodar um código em C: parecia simples, mas para mim foi um marco. Percebi que não era
+                só sobre escrever linhas, mas sobre lógica, criação e melhoria. Foi ali que percebi que queria seguir na
+                área de tecnologia.Assim decidi cursar Ciência da Computação. Seis meses depois do início do curso, me
+                tornei Jovem Aprendiz da Vivo aos 19 anos, meu primeiro trabalho, recepcionando clientes na loja. Eu
+                tinha metas de downloads do aplicativo da empresa e, no começo, não tinha uma estratégia clara. Então
+                comecei a observar padrões entre os clientes que aceitavam baixar o app e os que resistiam. Aos poucos
+                adaptei minha abordagem e comecei a bater as metas. Foi ali que percebi que aplicar métricas e análises
+                era o meu lado tecnológico funcionando fora do computador. Depois dessa experiência tive uma certeza:
+                queria usar essa lógica e visão analítica dentro da tecnologia. Desde que saí da Vivo, venho
+                aprofundando meus conhecimentos na área. Em 2026, me tornei aluno da Asimov Academy e isso mudou tudo na
+                minha tragetória, fiz projetos como o HenriPDF, um manipulador e resumidor de PDFs que utiliza IA e o
+                Chatbot com IA, um chatbot equipado com um agente Agno para conversas. A plataforma tem cursos
+                extremamente práticos e que focam em criar projetos para resolver problemas, com Python, Django, banco
+                de dados e inteligência artificial. È muito bom ver uma evolução tão rápida nas suas capacidades e saber
+                que está saindo na frente da concorrência, que muitas vezes pensa que <span style="color:#e5ff00">"diploma é diferencial"</span>.
+            </p>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- Habilidades -->
+        <section id="habilidades" class="section">
+            <p class="section-label">Habilidades</p>
+            <ul class="skills-grid">
+                {% for hab in habilidades %}
+                <li>{{hab.1}} - {{hab.2}}</li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- Projetos CTA -->
+        <section class="section">
+            <p class="section-label">Trabalhos</p>
+            <a href="/projetos" class="projects-card">
+                <div class="card-content">
+                    <span class="card-title">Meus projetos</span>
+                    <span class="card-desc">Veja os repositorios e trabalhos</span>
+                </div>
+                <span class="arrow">&rarr;</span>
+            </a>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- Contato -->
+        <section id="contato" class="section">
+            <p class="section-label">Contato</p>
+            <div class="contact-item">
+                <span class="icon">
+                    <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 122.88 88.86">
+                        <title>email</title>
+                        <path
+                            d="M7.05,0H115.83a7.07,7.07,0,0,1,7,7.05V81.81a7,7,0,0,1-1.22,4,2.78,2.78,0,0,1-.66,1,2.62,2.62,0,0,1-.66.46,7,7,0,0,1-4.51,1.65H7.05a7.07,7.07,0,0,1-7-7V7.05A7.07,7.07,0,0,1,7.05,0Zm-.3,78.84L43.53,40.62,6.75,9.54v69.3ZM49.07,45.39,9.77,83.45h103L75.22,45.39l-11,9.21h0a2.7,2.7,0,0,1-3.45,0L49.07,45.39Zm31.6-4.84,35.46,38.6V9.2L80.67,40.55ZM10.21,5.41,62.39,47.7,112.27,5.41Z" />
+                    </svg>
+                </span>
+                <a href="/email" class="email-card">
+                    <div class="card-content">
+                        <span class="card-title">Mande-me um e-mail</span>
+                        <span class="card-desc">Vamos conversar!</span>
+                    </div>
+                    <span class="arrow">&rarr;</span>
+                </a>
+            </div>
+            <div class="contact-item">
+                <span class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                        <line x1="12" y1="18" x2="12" y2="18"/>
+                    </svg>
+                </span>
+                    <div class="card-content">
+                        <span class="card-title">(62) 9 8285-9864</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2026 Henrique Siqueira</p>
+        </footer>
+
+    </div>
+</body>
+
+</html>
