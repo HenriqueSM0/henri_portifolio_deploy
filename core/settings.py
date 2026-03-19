@@ -26,7 +26,9 @@ SECRET_KEY = 'django-insecure-p^uuki$=0b=%4euf_$(wm)37oo1go8@s_1kk1u=t@hg&!0wh$m
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'henriquesm06.pythonanywhere.com ',
+]
 
 
 # Application definition
@@ -119,6 +121,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = '/home/henriquesm06/henri_portifolio_deploy/portifolio/static'
 
 # E-mail
 
