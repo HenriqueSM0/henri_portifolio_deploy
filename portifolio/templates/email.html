@@ -6,219 +6,255 @@
     <title>Mande-me um e-mail</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
     <style>
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --bg: #1992f5;
-            --surface: #0e0eff;
-            --surface-email:#ff0000;
-            --surface-email-hover:#9f0000;
-            --surface-esp: #7ec5ff;
-            --surface-hover: #0000a8;
+            --bg: #0d6edb;
+            --surface-email: #e8000e;
+            --surface-email-hover: #b5000b;
             --text: #ffffff;
-            --text-muted: #62f4ef;
-            --text-muted-esp:#fee500;
-            --accent: #98dfff;
-            --accent-esp:#ff8f8f;
-            --accent-dim: rgba(34, 211, 238, 0.1);
-            --border: #ffffff;
+            --text-muted: #a8f0ed;
+            --accent: #c4eaff;
+            --accent-dim: rgba(34, 211, 238, 0.08);
+            --border: rgba(255,255,255,0.22);
+            --glass: rgba(255,255,255,0.07);
+            --glass-hover: rgba(255,255,255,0.12);
         }
 
+        html { scroll-behavior: smooth; }
+
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: var(--bg);
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0d6edb 0%, #0852a8 40%, #0640c7 70%, #1992f5 100%);
+            background-attachment: fixed;
             color: var(--text);
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: 
+                radial-gradient(ellipse 60% 50% at 80% 20%, rgba(100,180,255,0.15) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 60% at 10% 80%, rgba(0,50,200,0.2) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.18;
+            pointer-events: none;
+        }
+        .orb-1 { width: 350px; height: 350px; background: #4db8ff; top: -80px; right: -80px; animation: drift 18s ease-in-out infinite; }
+        .orb-2 { width: 250px; height: 250px; background: #0022ff; bottom: 15%; left: -60px; animation: drift 22s ease-in-out infinite reverse; }
+
+        @keyframes drift {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(20px, -30px); }
         }
 
         .container {
-            max-width: 720px;
+            max-width: 680px;
             margin: 0 auto;
-            padding: 80px 24px;
+            padding: 72px 28px;
+            position: relative;
+            z-index: 1;
         }
 
-        /* Header / Hero */
-        .hero {
-            margin-bottom: 64px;
-        }
-
-        .hero h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            letter-spacing: -0.03em;
-            line-height: 1.2;
-            margin-bottom: 12px;
-        }
-
-        .hero .subtitle {
-            font-size: 1.1rem;
-            color: var(--text);
-            margin-bottom: 24px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 24px;
-            margin-top: 20px;
-        }
-
-        .nav-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.2s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent);
-        }
-
-        /* Divider */
-        .divider {
-            height: 1px;
-            background: var(--border);
-            margin: 48px 0;
-        }
-
-        /* Section */
-        .section {
-            margin-bottom: 48px;
-        }
-
-        .section-label {
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--accent);
-            margin-bottom: 20px;
-        }
-
-        .section h2 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            letter-spacing: -0.02em;
-            margin-bottom: 16px;
-        }
-
-        .section p {
-            color: var(--text-muted);
-            font-size: 1rem;
-            line-height: 1.7;
-        }
-
-        /* Form Styles */
-        .form-card {
-            background-color: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 32px;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin-bottom: 24px;
-        }
-
-        .form-group label {
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: var(--text);
-        }
-
-        .form-group input,
-        .form-group textarea {
-            background-color: var(--accent-dim);
-            border: 1px solid rgba(34, 211, 238, 0.15);
-            border-radius: 8px;
-            padding: 12px 16px;
-            font-size: 1rem;
-            color: var(--text);
-            font-family: inherit;
-            transition: border-color 0.2s ease, background-color 0.2s ease;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--accent);
-            background-color: rgba(34, 211, 238, 0.18);
-        }
-
-        .form-group input::placeholder,
-        .form-group textarea::placeholder {
-            color: var(--text-muted);
-            opacity: 0.7;
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 150px;
-        }
-
-        .submit-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            background-color: var(--surface-email);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 14px 28px;
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--text);
-            cursor: pointer;
-            transition: background-color 0.2s ease, transform 0.2s ease;
-            font-family: inherit;
-        }
-
-        .submit-btn:hover {
-            background-color: var(--surface-email-hover);
-            transform: translateY(-2px);
-        }
-
-        .submit-btn .arrow {
-            font-size: 1.1rem;
-            transition: transform 0.2s ease;
-        }
-
-        .submit-btn:hover .arrow {
-            transform: translateX(4px);
-        }
-
-        /* Back Link */
+        /* Back link */
         .back-link {
             display: inline-flex;
             align-items: center;
             gap: 8px;
             color: var(--text-muted);
             text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.2s ease;
+            font-size: 0.85rem;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            background: var(--glass);
+            backdrop-filter: blur(8px);
+            transition: all 0.2s ease;
+            margin-bottom: 40px;
+        }
+        .back-link:hover {
+            color: #fff;
+            background: var(--glass-hover);
+            transform: translateX(-3px);
+        }
+
+        /* Hero */
+        .hero {
+            margin-bottom: 48px;
+            animation: fadeUp 0.7s ease both;
+        }
+
+        .hero h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            line-height: 1.1;
+            background: linear-gradient(135deg, #fff 0%, #c4eaff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .hero .subtitle {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-weight: 300;
+        }
+
+        /* Divider */
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            margin: 40px 0;
+        }
+
+        /* Section label */
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
             margin-bottom: 24px;
         }
+        .section-label::before {
+            content: '';
+            display: block;
+            width: 20px;
+            height: 1px;
+            background: var(--accent);
+            opacity: 0.5;
+        }
 
-        .back-link:hover {
+        /* Result label */
+        .result-label {
+            padding: 10px 18px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 10px;
+            font-size: 0.9rem;
             color: var(--accent);
+            margin-bottom: 8px;
+            display: inline-block;
+            backdrop-filter: blur(8px);
         }
 
-        .back-link .arrow {
-            transition: transform 0.2s ease;
+        /* Form card */
+        .form-card {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 36px;
+            backdrop-filter: blur(16px);
+            position: relative;
+            overflow: hidden;
         }
 
-        .back-link:hover .arrow {
-            transform: translateX(-4px);
+        .form-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
         }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 22px;
+        }
+
+        .form-group label {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: rgba(255,255,255,0.8);
+            letter-spacing: 0.01em;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 13px 18px;
+            font-size: 0.97rem;
+            color: var(--text);
+            font-family: inherit;
+            transition: all 0.2s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: rgba(196,234,255,0.5);
+            background: rgba(255,255,255,0.1);
+            box-shadow: 0 0 0 3px rgba(100,200,255,0.12);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(168, 240, 237, 0.45);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 140px;
+        }
+
+        .submit-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: var(--surface-email);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 14px;
+            padding: 15px 32px;
+            font-size: 0.97rem;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            color: var(--text);
+            cursor: pointer;
+            transition: all 0.25s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+        }
+
+        .submit-btn:hover {
+            background: var(--surface-email-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 32px rgba(200,0,0,0.35);
+        }
+
+        .submit-btn .arrow { transition: transform 0.2s ease; }
+        .submit-btn:hover .arrow { transform: translateX(5px); }
 
         /* Footer */
         .footer {
@@ -226,51 +262,45 @@
             padding-top: 24px;
             border-top: 1px solid var(--border);
             text-align: center;
-            font-size: 0.8rem;
-            color: var(--text-muted);
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.35);
         }
 
-        /* Responsive */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
         @media (max-width: 640px) {
-            .container {
-                padding: 48px 20px;
-            }
-
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-
-            .form-card {
-                padding: 24px;
-            }
+            .container { padding: 48px 18px; }
+            .form-card { padding: 24px; }
         }
     </style>
 </head>
 <body>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+
     <div class="container">
 
-        <!-- Back Link -->
         <a href="/" class="back-link">
-            <span class="arrow">&larr;</span>
-            Voltar
+            <span>&larr;</span> Voltar
         </a>
 
-        <!-- Hero -->
         <header class="hero">
             <h1>Mande-me um e-mail</h1>
-            <p class="subtitle">Vamos conversar!</p>
+            <p class="subtitle">Vamos conversar! Responderei em breve.</p>
         </header>
 
         <div class="divider"></div>
 
-        <!-- Form Section -->
-        <section class="section">
-            <p class="section-label">Formulário de contato</p>
+        <section>
+            <span class="section-label">Formulário de contato</span>
             <div class="form-card">
                 <form method="post">
                     {% csrf_token %}
                     <div class="form-group">
-                        <label for="name">{{result}}</label>
+                        <span class="result-label">{{result}}</span>
                     </div>
                     <div class="form-group">
                         <label for="name">Nome</label>
@@ -278,7 +308,7 @@
                     </div>
                     <div class="form-group">
                         <label for="email">E-mail</label>
-                        <input type="text" name="email" id="email" placeholder="seu@email.com" required>
+                        <input type="email" name="email" id="email" placeholder="seu@email.com" required>
                     </div>
                     <div class="form-group">
                         <label for="assunto">Assunto</label>
@@ -286,21 +316,48 @@
                     </div>
                     <div class="form-group">
                         <label for="text">Mensagem</label>
-                        <textarea name="text" id="text" rows="10" placeholder="Escreva sua mensagem aqui..."></textarea>
+                        <textarea name="text" id="text" rows="6" placeholder="Escreva sua mensagem aqui..."></textarea>
                     </div>
                     <button type="submit" class="submit-btn">
-                        Enviar
+                        Enviar mensagem
                         <span class="arrow">&rarr;</span>
                     </button>
                 </form>
             </div>
         </section>
 
-        <!-- Footer -->
         <footer class="footer">
             <p>&copy; 2026 Henrique Siqueira</p>
         </footer>
-
     </div>
+
+    <script>
+        // Input float effect
+        document.querySelectorAll('.form-group input, .form-group textarea').forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.querySelector('label').style.color = '#c4eaff';
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.querySelector('label').style.color = '';
+            });
+        });
+
+        // Parallax orbs
+        document.addEventListener('mousemove', e => {
+            const x = (e.clientX / window.innerWidth - 0.5) * 15;
+            const y = (e.clientY / window.innerHeight - 0.5) * 15;
+            document.querySelector('.orb-1').style.transform = `translate(${x}px, ${y}px)`;
+        });
+
+        // Fade in form card
+        const card = document.querySelector('.form-card');
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(16px)';
+        card.style.transition = 'opacity 0.6s ease 0.3s, transform 0.6s ease 0.3s';
+        requestAnimationFrame(() => {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+        });
+    </script>
 </body>
 </html>

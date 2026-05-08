@@ -51,6 +51,7 @@ class Projeto :
                                VALUES ('{name}', '{description}', '{link_rep}', '{link_you}')
                 ''')
     
+    
     def get_projs () :
         with connection.cursor() as cursor :
             cursor.execute(''' SELECT * FROM projs''')

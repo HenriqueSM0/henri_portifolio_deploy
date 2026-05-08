@@ -9,6 +9,7 @@ def create_db () :
 
 def home(request) :
     habs = Habilidade.get_habs()
+    Projeto.create_proj('Video Study Gen', 'Projeto que utiliza a URL de um video ou um aúdio para gerar qustões, slides e resumos com IA', 'https://github.com/HenriqueSM0/video_study_gen')
     return render(request, 'home.html', {'habilidades':habs})
 
 def proj_list (request) :
